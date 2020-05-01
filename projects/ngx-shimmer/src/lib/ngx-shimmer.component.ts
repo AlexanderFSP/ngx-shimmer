@@ -2,18 +2,11 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'ngx-shimmer',
-  template: `
-    <p>
-      ngx-shimmer works!
-    </p>
-  `,
-  styles: []
+  templateUrl: './ngx-shimmer.component.html',
+  styleUrls: ['./ngx-shimmer.component.scss'],
 })
 export class NgxShimmerComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

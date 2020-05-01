@@ -5,6 +5,11 @@
   "projects": {
     "ngx-shimmer": {
       "projectType": "library",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
       "root": "projects/ngx-shimmer",
       "sourceRoot": "projects/ngx-shimmer/src",
       "prefix": "ngx",

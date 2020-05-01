@@ -8,9 +8,8 @@ describe('NgxShimmerComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NgxShimmerComponent ]
-    })
-    .compileComponents();
+      declarations: [NgxShimmerComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

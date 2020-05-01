@@ -1,12 +1,10 @@
 import { NgModule } from '@angular/core';
+
 import { NgxShimmerComponent } from './ngx-shimmer.component';
-
-
 
 @NgModule({
   declarations: [NgxShimmerComponent],
-  imports: [
-  ],
-  exports: [NgxShimmerComponent]
+  imports: [],
+  exports: [NgxShimmerComponent],
 })
-export class NgxShimmerModule { }
+export class NgxShimmerModule {}
