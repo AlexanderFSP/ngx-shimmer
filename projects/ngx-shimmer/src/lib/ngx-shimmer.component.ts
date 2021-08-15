@@ -22,7 +22,6 @@ class IntendedError extends Error {
 
 /**
  * TODO:
- * - Setup linter (eslint)
  * - Tpl & styles
  * - Control shimmer & image proportions (via inputs or via css variables)
  * - Custom error template (via projection)
@@ -39,9 +38,9 @@ class IntendedError extends Error {
 })
 export class NgxShimmerComponent implements OnChanges, OnDestroy {
   @Input() public src!: string;
-  @Input() public alt: string = '';
+  @Input() public alt = '';
 
-  @Output() public readonly onLoad = new EventEmitter<HTMLImageElement>();
+  @Output() public readonly loaded = new EventEmitter<HTMLImageElement>();
 
   public readonly state$: Observable<INgxShimmerComponentState>;
 
@@ -112,7 +111,7 @@ export class NgxShimmerComponent implements OnChanges, OnDestroy {
       this.img = img;
       this.forceReject = reject;
 
-      const onResolve = async () => {
+      const onResolve = async (): Promise<void> => {
         if (img.decode !== undefined) {
           try {
             await img.decode();
@@ -121,10 +120,10 @@ export class NgxShimmerComponent implements OnChanges, OnDestroy {
 
         resolve(img.src);
 
-        this.onLoad.emit(img);
+        this.loaded.emit(img);
       };
 
-      const onReject = () => reject(new Error('An error occurred while trying to download an image'));
+      const onReject = (): void => reject(new Error('An error occurred while trying to download an image'));
 
       img.onload = onResolve;
       img.onerror = onReject;

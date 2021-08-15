@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies, simple-import-sort/imports */
 // This file is required by karma.conf.js and loads recursively all the .spec and framework files
 
 import 'zone.js';
@@ -24,4 +25,5 @@ getTestBed().initTestEnvironment(BrowserDynamicTestingModule, platformBrowserDyn
 // Then we find all the tests.
 const context = require.context('./', true, /\.spec\.ts$/);
 // And load the modules.
+// eslint-disable-next-line unicorn/no-array-callback-reference
 context.keys().map(context);

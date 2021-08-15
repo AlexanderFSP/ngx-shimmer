@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+
 import { NgxShimmerComponent } from './ngx-shimmer.component';
 
 @NgModule({
