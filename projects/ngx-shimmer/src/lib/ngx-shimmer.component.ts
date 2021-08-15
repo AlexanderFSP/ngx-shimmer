@@ -10,22 +10,26 @@ import {
 } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 
-import { IntendedError } from './models';
-
 interface INgxShimmerComponentState {
   isLoading: boolean;
   src?: string;
   isFailure?: boolean;
 }
 
+class IntendedError extends Error {
+  public readonly intention: string = 'forcePromiseReject';
+}
+
 /**
  * TODO:
- * - Custom error template (`error` passes as `$implicit` in context). Type will be 'string', I suppose
- * - Control shimmer & image proportions (via inputs or via css variables)
- * - Setup linter
- * - Extended logging for 'development' mode
+ * - Setup linter (eslint)
  * - Tpl & styles
+ * - Control shimmer & image proportions (via inputs or via css variables)
+ * - Custom error template (via projection)
+ * - Extended logging for 'development' mode
+ * - Tests
  * - README.md
+ * - Publish
  */
 @Component({
   selector: 'ngx-shimmer',
@@ -64,6 +68,9 @@ export class NgxShimmerComponent implements OnChanges, OnDestroy {
     this.img = undefined;
   }
 
+  /**
+   * Start image loading process
+   */
   private async start(): Promise<void> {
     // Validate `src` input existence
     if (!this.src) {
@@ -79,7 +86,7 @@ export class NgxShimmerComponent implements OnChanges, OnDestroy {
 
       this._state$.next({ isLoading: false, src });
     } catch (error) {
-      // If this is an intended(forced) rejection, don't make it visible to user
+      // If this is an intended/forced rejection, don't make it visible to user
       if (!(error instanceof IntendedError)) {
         this._state$.next({ isLoading: false, isFailure: true });
       }
@@ -117,7 +124,7 @@ export class NgxShimmerComponent implements OnChanges, OnDestroy {
         this.onLoad.emit(img);
       };
 
-      const onReject = () => reject(new Error('An Error occurred while trying to download an image'));
+      const onReject = () => reject(new Error('An error occurred while trying to download an image'));
 
       img.onload = onResolve;
       img.onerror = onReject;
