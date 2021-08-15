@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { NgxShimmerModule } from 'ngx-shimmer';
+
 import { AppComponent } from './app.component';
 
 @NgModule({

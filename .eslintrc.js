@@ -61,7 +61,7 @@ module.exports = {
           'error',
           {
             type: 'element',
-            prefix: 'ngx',
+            prefix: 'app',
             style: 'kebab-case'
           }
         ],
@@ -69,7 +69,7 @@ module.exports = {
           'error',
           {
             type: 'attribute',
-            prefix: 'ngx',
+            prefix: 'app',
             style: 'camelCase'
           }
         ],

@@ -6,7 +6,9 @@
     "start": "npm run build:lib:dev & concurrently \"npm run start:demo\" \"npm run start:lib\"",
     "start:demo": "ng serve",
     "start:lib": "ng build --watch --configuration development",
-    "lint:lib": "eslint -c .eslintrc.js ./projects/ngx-shimmer",
+    "lint": "eslint ./",
+    "lint:demo": "eslint ./projects/ngx-shimmer-demo",
+    "lint:lib": "eslint ./projects/ngx-shimmer",
     "test": "ng test",
     "build:lib:dev": "ng build --configuration development",
     "build:lib:prod": "ng build"
